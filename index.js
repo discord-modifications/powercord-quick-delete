@@ -15,9 +15,10 @@ module.exports = class QuickDelete extends Plugin {
          const deletePerm = Permissions.can(constants.Permissions.MANAGE_MESSAGES, channel);
 
          if (res?.props) {
+            let old = res.props.children.props.onClick
             res.props.children.props.onClick = function (e) {
-
-               if (e?.ctrlKey && !(deletePerm || getCurrentUser().id === message.author.id)) return res;
+               old(e)
+               if (e?.ctrlKey && !(deletePerm || getCurrentUser().id === message.author.id)) return;
 
                if (e?.ctrlKey) {
                   messages.deleteMessage(channel.id, message.id);
