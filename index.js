@@ -5,7 +5,7 @@ const { findInReactTree } = require('powercord/util');
 
 const Message = getModule(m => m.default?.displayName == 'Message', false);
 const Permissions = getModule(['getChannelPermissions'], false);
-const { getCurrentUser } = getModule(['getCurrentUser'], false);
+const { getCurrentUser } = getModule(['getNullableCurrentUser'], false);
 
 const Settings = require('./components/Settings');
 
