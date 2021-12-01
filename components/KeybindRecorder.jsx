@@ -1,5 +1,5 @@
 const { React } = require('powercord/webpack');
-const FormItem = require('powercord/components/settings/FormItem');
+const { FormItem } = require('powercord/components/settings');
 
 module.exports = class TextInput extends React.PureComponent {
    constructor(props) {
