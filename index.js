@@ -3,9 +3,9 @@ const { getModule, constants, messages } = require('powercord/webpack');
 const { inject, uninject } = require('powercord/injector');
 const { findInReactTree } = require('powercord/util');
 
-const Message = getModule(m => m.default?.displayName == 'Message', false);
-const Permissions = getModule(['getChannelPermissions'], false);
+const Message = getModule(m => (m.__powercordOriginal_default || m.default)?.toString().includes('childrenRepliedMessage'));
 const { getCurrentUser } = getModule(['getCurrentUser', 'getUser'], false);
+const Permissions = getModule(['getChannelPermissions'], false);
 
 const Settings = require('./components/Settings');
 
